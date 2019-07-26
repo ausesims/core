@@ -1,29 +1,23 @@
 using System;
 
-namespace DotnetBot
+public static class Program
 {
-    public static class Program
+    public static void Main(string[] args)
     {
-                public static void Main(string[] args) 
-                {
-                        string message = "";
-                        if (args.Length < 1) 
-                        {
-                          message = "Welcome to .NET Core!";
-                        } else 
-                        {
-                          foreach (string item in args) 
-                          {
-                            message += item; 
-                          }
-                        }
-                        Console.WriteLine(GetBot(message));
-                }
+        string message = "dotnet-bot: Welcome to using .NET Core!";
 
-                public static string GetBot(string message) 
-                {
-                        string bot = "\n" + "        " + message;
-                        bot += @"
+        if (args.Length > 0)
+        {
+            message = string.Join(" ", args);
+        }
+
+        Console.WriteLine(GetBot(message));
+    }
+
+    public static string GetBot(string message)
+    {
+        string bot = $"\n        {message}";
+        bot += @"
     __________________
                       \
                        \
@@ -63,9 +57,6 @@ namespace DotnetBot
         .....
 
 ";
-                        return bot;
-                }
-
-
-        }
+        return bot;
+    }
 }
